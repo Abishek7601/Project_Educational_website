@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+</head>
+<body>
+
+<div class="header">👤 My Profile</div>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a th:href="@{/home}">🏠 Home</a>
+        <a th:href="@{/profile}">👤 Profile</a>
+        <a th:href="@{/settings}">⚙ Settings</a>
+        <a th:href="@{/logout}">🚪 Logout</a>
+    </div>
+
+    <!-- Profile Content -->
+    <div class="content">
+
+        <div class="profile-card">
+
+            <!-- Profile Image -->
+            <!-- <img class="profile-img" 
+                 th:src="@{/image/{id}(id=${user.id})}" 
+                 alt="Profile Image"> -->
+
+            <h2 th:text="${user.fullName}"></h2>
+            <p class="email" th:text="${user.email}"></p>
+
+            <!-- Details -->
+            <div class="details">
+
+                <p><b>Mobile:</b> <span th:text="${user.mobile}"></span></p>
+                <p><b>Gender:</b> <span th:text="${user.gender}"></span></p>
+                <p><b>DOB:</b> <span th:text="${user.dob}"></span></p>
+                <p><b>Course:</b> <span th:text="${user.course}"></span></p>
+                <p><b>Location:</b> <span th:text="${user.city}"></span></p>
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <a th:href="@{/editProfile}" class="edit-btn">✏ Edit Profile</a>
+                <a th:href="@{/dashboard}" class="back-btn">⬅ Back</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

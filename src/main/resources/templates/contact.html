@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/contact.css}">
+</head>
+<body>
+<div  th:replace="~{common/header::headers}"></div>
+<div th:action="@{/contact}">
+
+      <div class="div2">
+        <h1 class="h1">SCOPE INDIA Locations & Contact Details</h1>
+    </div>
+    <div class="div1" style="background-color: white; position: relative ;bottom:50px;">
+            <h1 class="h2" >Center for Software, Networking, & Cloud Education</h1>
+     <h4 class="h3" >One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience. Over 1,000 students find their dream careers <br>
+          each year, and we have assisted more than 15,000 students so far.<br><br></h4>
+    </div>
+<div class="con-grid">
+    <div class="con-card">
+        <img th:src="@{/images/contact-scope.webp}">
+        <div class="overlay">
+<h4>SCOPE INDIA is open 365 days a year</h4>
+<p>Call us now if you are looking for an IT job or adding more skills to your career</p>
+</div>
+    </div>
+<div class="con-card">
+    <h5>SCOPE INDIA Trivandrum, Kerala</h5>
+    <p>TC 25/1403/3, Athens Plaza, SS Kovil Road, Thampanoor, Trivandrum, Kerala 695001</p>
+    <div class="infobox">9745936073</div>
+    <div class="infobox">info@scopeindia.org</div>
+    <div class="infobox">Location Route Map</div>
+</div>
+<div class="con-card">
+    <h5>SCOPE INDIA Technopark, Kerala</h5>
+    <p>Phase 1, Main Gate, Diamond Arcade, Near Technopark, <br>
+        Trivandrum</p>
+    <div class="infobox">9745936073</div>
+    <div class="infobox">technopark@scopeindia.org</div>
+    <div class="infobox">Location Route Map</div>
+</div>
+<div class="con-card">
+    <h5>SCOPE INDIA Kochi, Kerala</h5>
+    <p>Vasanth Nagar Rd, near JLN Metro Station, Kaloor, Kochi, Kerala 682025</p>
+    <div class="infobox">7592939481</div>
+    <div class="infobox">kochi@scopeindia.org</div>
+    <div class="infobox">Location Route Map</div>
+</div>
+<div class="con-card">
+    <h5>SCOPE INDIA Nagercoil 1, Tamil Nadu</h5>
+    <p>Near WCC College, Palace Rd, Nagercoil, Tamil Nadu 629001</p>
+    <div class="infobox">8075536185</div>
+    <div class="infobox">ngl@scopeindia.org</div>
+    <div class="infobox">Location Route Map</div>
+</div>
+<div class="con-card">
+    <h5>SCOPE INDIA Nagercoil 2, Tamil Nadu</h5>
+    <p>Pharma Street, 5/2 Ward 28, Distillery Road, WCC Jn. Nagercoil</p>
+    <div class="infobox">8075536185</div>
+    <div class="infobox">ngl@scopeindia.org</div>
+    <div class="infobox">Location Route Map</div>
+</div>
+
+    </div>
+</div><br><br>
+
+<div  th:replace="~{common/footer::footers}"></div>
+
+</body>
+</html>

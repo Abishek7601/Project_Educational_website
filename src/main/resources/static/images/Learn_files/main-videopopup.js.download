@@ -1,0 +1,323 @@
+
+
+function show_mobile_menu(){
+	if(document.getElementById("mobile_menu").style.display == "inline-block"){
+		document.getElementById("mobile_menu").style.display = "none";
+	}else{
+		document.getElementById("mobile_menu").style.display = "inline-block";
+	}
+}
+
+
+function showFloatButtons(){
+	document.getElementById("container_right_float_items").style.display = "block";
+}
+
+// Timer is set to call the showAd function in 3 seconds after the page is loaded
+// const timer= setTimeout(showFloatButtons, 3000);
+// interval_id = setInterval(showFloatButtons, 10000);
+
+
+// ============ scrollToTop =============
+window.onscroll = function() {
+  let button = document.getElementById("up_button");
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    button.style.display = "block"; 
+  } else {
+    button.style.display = "none"; 
+  }
+};
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+// JQUERY --------------------------------------------------------------------------//
+
+$(document).ready(function(){
+
+
+  $("#mobile_menu_button, #mobile_menu").click(function(){
+  	//alert("test");
+    $("#mobile_menu").fadeToggle(500);
+    $("#container_right_float_items").fadeToggle(500);
+  });
+
+  $(".close_button_float_box").click(function(){
+  	//alert("test");
+    $("#container_right_float_items").fadeToggle(500);
+  });
+
+  $("#callback_title").click(function(){
+      $("#call_back_form_set").slideToggle(500);
+  });
+
+  $("#callback_button").click(function(e) {
+    e.preventDefault();
+  
+    let client_name = $("#call_back_visitor_name").val().trim();
+    let client_contact = $("#call_back_visitor_phone").val().trim();
+    let name_error = $("#name_error");
+    let phone_error = $("#phone_error");
+    let isValid = true;
+  
+    name_error.text("").hide();
+    phone_error.text("").hide();
+  
+    if (!/^[A-Za-z\s]+$/.test(client_name) || client_name.length < 4) {
+      name_error.text("Please enter a valid name").show();
+      name_error.append('<br>')
+      isValid = false;
+    }
+  
+    if (!/^\+?\d{10,13}$/.test(client_contact)) {
+      phone_error.text("Please enter a valid phone number").show();
+      isValid = false;
+    }
+  
+    if (isValid) {
+      name_error.text("").hide();
+      phone_error.text("").hide();
+  
+      $("#call_back_visitor_name, #call_back_visitor_phone").val("");
+      $("#callback_button").prop("disabled", true);
+  
+      $.post("https://scopeindia.org/php/callback-email.php", {
+        call_back_visitor_name: client_name,
+        call_back_visitor_phone: client_contact
+      }, function(data) {
+        console.log(data);
+        $("#callback_button").prop("disabled", false);
+  
+        $("#callback_message").text("We have received your request, we will be back to you ASAP.")
+          .fadeIn(2000).delay(7000).fadeOut(1000).append('<br>');
+      }).fail(function() {
+        $("#callback_button").prop("disabled", false);
+        $("#callback_message").text("Something went wrong, please try again later.")
+          .fadeIn(2000).delay(7000).fadeOut(1000);
+      });
+    }
+  });
+  
+
+  $("#callback_button1").click(function(e){
+
+    window.location.href = "tel:+919745936073";
+
+    e.preventDefault();
+    let client_name = $("#call_back_visitor_name").val().trim();
+    let client_contact = $("#call_back_visitor_phone").val().trim();
+    let name_error = $("#name_error");
+    let phone_error = $("#phone_error");
+    let isValid = true;
+
+    name_error.text("").hide();
+    phone_error.text("").hide();
+
+    if((client_name.length<4)){
+        isValid = false;
+    }
+
+    if(client_contact.length < 10 || client_contact.length > 13){
+      isValid = false;
+   }
+
+    if (isValid) {
+      name_error.text("").hide();
+      phone_error.text("").hide();
+
+      $("#callback_message").text("We have received your request, we will be back to you ASAP.")
+        .fadeIn(1000).delay(7000).fadeOut(1000);
+      
+      $("#call_back_visitor_name, #call_back_visitor_phone").val("");
+
+      $.post("https://scopeindia.org/php/callback-email.php", {
+        call_back_visitor_name: client_name,
+        call_back_visitor_phone: client_contact
+      }, function(data) {
+        
+      });
+    }
+
+  });
+
+//   function showPopup() {
+//     $('#call_back_overlay').css('display', 'flex').fadeIn(500);
+//   }
+
+//   $('#call_back_form_pop').click(function () {
+//     showPopup();
+//   });
+
+
+//   $('.close_button_overlay').click(function () {
+
+//     let name_error = $("#name_error");
+//     let phone_error = $("#phone_error");
+
+//     name_error.text("").hide();
+//     phone_error.text("").hide();
+//     $('#call_back_visitor_name, #call_back_visitor_phone').val("");
+//     $('#call_back_overlay').fadeOut(500); 
+
+//     setTimeout(showPopup, 30000);
+
+//   });
+
+//   setTimeout(function () {
+//     showPopup();
+//   }, 20000);
+
+// $('#call_back_overlay').click(function() {
+//   $('#call_back_overlay').fadeOut();
+// });
+
+$(document).ready(function () {
+    const videoPopup = $("#video_playback_overlay");
+    const formPopup = $("#call_back_overlay");
+    const mainVideoContainer = document.getElementById("mainVideo");
+    const thumbnailRow = document.getElementById("thumbnailRow");
+
+    const videoLinks = [
+        "video-popup/videos/anagha_review.mp4",
+        "video-popup/videos/amina_review.mp4",
+        "video-popup/videos/vinodsir.mp4",
+        "video-popup/videos/Networking_courses.mp4"
+    ];
+    const videoThumbnails = [
+        "video-popup/thumbnails/anagha.jpg",
+        "video-popup/thumbnails/amina.jpg",
+        "video-popup/thumbnails/vinod.jpg",
+        "video-popup/thumbnails/networking.jpg"
+    ];
+
+    let currentIndex = -1;
+    const thumbnails = [];
+    let videoAlreadyShown = false; // ensure video popup only shows once
+
+    // Generate thumbnails
+    videoLinks.forEach((link, index) => {
+        const thumb = document.createElement("img");
+        thumb.src = videoThumbnails[index];
+        thumb.alt = `Video ${index + 1}`;
+        thumb.className = "thumb-img";
+        thumbnails.push(thumb);
+        thumbnailRow.appendChild(thumb);
+        thumb.addEventListener("click", () => {
+            currentIndex = index;
+            loadVideoPlayer(index, true);
+        });
+    });
+
+    function highlightThumbnail(index) {
+        thumbnails.forEach((thumb, i) => {
+            thumb.classList.toggle("active-thumb", i === index);
+        });
+    }
+
+    function loadVideoPlayer(index, autoplay = false) {
+        const link = videoLinks[index];
+        mainVideoContainer.innerHTML = "";
+
+        const video = document.createElement("video");
+        video.src = link;
+        video.controls = true;
+        video.style.width = "100%";
+        video.style.height = "100%";
+
+        if (autoplay) {
+            video.autoplay = true;
+            video.muted = false;
+        }
+
+        mainVideoContainer.appendChild(video);
+        highlightThumbnail(index);
+    }
+
+    function playRandomVideo() {
+        let randomIndex;
+        do {
+            randomIndex = Math.floor(Math.random() * videoLinks.length);
+        } while (randomIndex === currentIndex && videoLinks.length > 1);
+
+        currentIndex = randomIndex;
+        loadVideoPlayer(currentIndex, true);
+    }
+
+    function showFormPopupLooping() {
+        setTimeout(() => {
+            formPopup.fadeIn();
+        }, 20000); // 1 seconds after closing
+    }
+
+    // Video popup close
+    $(".video_close_button_overlay").on("click", function () {
+        const currentVideo = mainVideoContainer.querySelector("video");
+        if (currentVideo) {
+            currentVideo.pause();
+            currentVideo.src = "";
+            currentVideo.load();
+            mainVideoContainer.innerHTML = "";
+        }
+
+        videoPopup.fadeOut(() => {
+            showFormPopupLooping();
+        });
+    });
+
+    // Form popup close (continues loop)
+    $(".close_button_overlay").on("click", function () {
+        formPopup.fadeOut(() => {
+            showFormPopupLooping();
+        });
+    });
+
+    // Autoplay fallback for browser restrictions
+    document.addEventListener("click", () => {
+        const currentVideo = mainVideoContainer.querySelector("video");
+        if (currentVideo && currentVideo.paused) {
+            currentVideo.muted = false;
+            currentVideo.play().catch(err => console.log("Autoplay blocked:", err));
+        }
+    }, { once: true });
+
+    // Initial setup
+    videoPopup.hide();
+    formPopup.hide();
+
+    // Start: show video popup only ONCE
+    setTimeout(() => {
+        if (!videoAlreadyShown) {
+            videoAlreadyShown = true;
+            playRandomVideo();
+            videoPopup.fadeIn();
+        }
+    }, 1000); // 1s after page load
+});
+
+
+
+// end videopopup
+
+  $('#reg_date_of_birth').on('click', function(){
+    var today = new Date().toISOString().split('T')[0];
+    $(this).attr('max', today);
+  });
+
+  $('#back_to_courses').click(function(){
+    window.location.href = "courses-scope-india.html";
+  });
+
+  $('#batch_time_software').load("batch-time/batch-time-software.data");
+  $('#batch_time_networking').load("batch-time/batch-time-networking.data");
+  $('#batch_time_others').load("batch-time/batch-time-others.data");
+
+  // if we want to disable right click
+  
+  // $(document).on('contextmenu', function(e) {
+  //   e.preventDefault();
+  // });
+});
+
+// JQUERY --------------------------------------------------------------------------//
+

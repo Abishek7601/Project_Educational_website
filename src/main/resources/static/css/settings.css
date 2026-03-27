@@ -1,0 +1,108 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* Layout */
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: rgba(255,255,255,0.1);
+    height: 100vh;
+    padding-top: 30px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #00c6ff;
+    padding-left: 25px;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.settings-card {
+    width: 400px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Title */
+.settings-card h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* Button */
+.save-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Registration</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div  th:replace="~{common/header::headers}"></div>
+
+<div>
+    <h1 >
+        Course Registration at SCOPE INDIA
+    </h1>
+</div>
+
+<div class="center"  style="background-color: white; position: relative ;bottom:55px;">
+    <h2 class="h2" >
+        Center for Software, Networking, & Cloud Education
+    </h2>
+     
+     <h3 class="h3">One of India's best Training destinations for Software, Networking, DevOps and Cloud Computing courses with 18 years of Industrial experience. Over 1,000 students find their dream careers <br>
+        each year, and we have assisted more than 15,000 students so far.</h3><br>
+
+</div>
+
+<div style="padding:10px 50px;">
+
+<form th:action="@{/register}" th:object="${student}" method="post">
+
+<div class="form-grid">
+
+    <div class="form-group">
+        <label>Full Name (required)</label>
+        <input type="text" th:field="*{fullName}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth (required)</label>
+        <input type="date" th:field="*{dob}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Gender (required)</label>
+        <div class="radio-group">
+            <label><input type="radio" th:field="*{gender}" value="Male"> Male</label>
+            <label><input type="radio" th:field="*{gender}" value="Female"> Female</label>
+            <label><input type="radio" th:field="*{gender}" value="Other"> Other</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Educational Qualification</label>
+        <input type="text" th:field="*{education}">
+    </div>
+
+    <div class="form-group">
+        <label>Mobile Number (required)</label>
+        <input type="text" th:field="*{mobile}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Email (required)</label>
+        <input type="text" th:field="*{email}" required>
+    </div>
+
+    <div class="form-group">
+        <label>Guardian's Name</label>
+        <input type="text" th:field="*{guardianName}">
+    </div>
+
+    <div class="form-group">
+        <label>Guardian's Occupation</label>
+        <input type="text" th:field="*{guardianOccupation}">
+    </div>
+
+    <div class="form-group">
+        <label>Guardian's Mobile</label>
+        <input type="text" th:field="*{guardianMobile}">
+    </div>
+
+    <div class="form-group">
+        <label>Choose Course (required)</label>
+        <select th:field="*{course}" required>
+            <option value="">__Select Course__</option>
+            <option value="Java Full Stack">Java Full Stack</option>
+            <option value="Python Full Stack">Python Full Stack</option>
+            <option value="PHP Full Stack">PHP Full Stack</option>
+             <option value="Mern Full Stack">MERN Full Stack</option>
+            <option value="Data Science">Data Science</option>
+            <option value="UI/UX Designing">UI/UX Designing</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Training Mode (required)</label>
+        <div class="radio-group">
+            <label><input type="radio" th:field="*{trainingMode}" value="Live online"> Live Online</label>
+            <label><input type="radio" th:field="*{trainingMode}" value="Classroom"> Classroom</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>SCOPE INDIA Location</label>
+        <div class="radio-group">
+            <label><input type="radio" th:field="*{scopeLocation}" value="Technopark">  Technopark</label>
+            <label><input type="radio" th:field="*{scopeLocation}" value="Thampanoor">  Thampanoor</label><br>
+            <label><input type="radio" th:field="*{scopeLocation}" value="Kochi">  Kochi</label>
+            <label><input type="radio" th:field="*{scopeLocation}" value="Nagercoil">  Nagercoil</label>
+            <label><input type="radio" th:field="*{scopeLocation}" value="Online">  Online</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred Training Timings</label>
+        <div class="check-group">
+            <label><input type="checkbox" th:field="*{preferredTimings}" value="8am-10am"> 8-10am</label>
+            <label><input type="checkbox" th:field="*{preferredTimings}" value="9am-1pm"> 9-1pm</label>
+            <label><input type="checkbox" th:field="*{preferredTimings}" value="1pm-6pm"> 1-6pm</label>
+            <label><input type="checkbox" th:field="*{preferredTimings}" value="6pm-10pm"> 6-10pm</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <textarea th:field="*{address}" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Country</label>
+        <input type="text" th:field="*{country}">
+    </div>
+
+    <div class="form-group">
+        <label>State</label>
+        <input type="text" th:field="*{state}">
+    </div>
+
+    <div class="form-group">
+        <label>City</label>
+        <input type="text" th:field="*{city}">
+    </div>
+
+    <div class="form-group">
+        <label>Pin Code</label>
+        <input type="text" th:field="*{pinCode}">
+    </div>
+
+<!-- <div class="form-group">
+    <label>Upload Profile Image</label>
+    <input type="file" name="imageFile" accept="image/*" required>
+</div> -->
+
+     <div class="btn">
+    <button type="submit" class="submit-btn">
+        Complete Registration >>
+    </button>
+    </div>
+
+</div>
+
+</form>
+</div>
+
+<div th:replace="~{common/footer::footers}"></div>
+
+</body>
+</html>

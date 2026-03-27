@@ -1,0 +1,54 @@
+ <!DOCTYPE html>
+ <html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+<body> 
+
+<div class="header">Welcome to Dashboard 🎉</div>
+<div class="container">
+    <div class="sidebar">
+    <a th:href="@{/home}">🏠 Home</a>
+<a th:href="@{/profile}">👤 Profile</a>
+<a th:href="@{/settings}">⚙ Settings</a>
+<a th:href="@{/logout}">🚪 Logout</a>
+</div>
+<div class="content">
+     <div class="card">
+            <h2>User Details</h2>
+
+<div class="info">
+
+
+
+<p><b>Name:</b> <span th:text="${user.fullName}"></span></p>
+<p><b>DOB:</b> <span th:text="${user.dob}"></span></p>
+<p><b>Gender:</b> <span th:text="${user.gender}"></span></p>
+<p><b>Education:</b> <span th:text="${user.education}"></span></p>
+<p><b>Mobile:</b> <span th:text="${user.mobile}"></span></p>
+<p><b>Email:</b> <span th:text="${user.email}"></span></p>
+<p><b>Guardian Name:</b> <span th:text="${user.guardianName}"></span></p>
+<p><b>Guardian Occupation:</b> <span th:text="${user.guardianOccupation}"></span></p>
+<p><b>Guardian Mobile:</b> <span th:text="${user.guardianMobile}"></span></p>
+<p><b>Course:</b> <span th:text="${user.course}"></span></p>
+<p><b>Training Mode:</b> <span th:text="${user.trainingMode}"></span></p>
+<p><b>Scope Location:</b> <span th:text="${user.scopeLocation}"></span></p>
+<p><b>Preferred Timing:</b> <span th:text="${user.preferredTimings}"></span></p>
+<p><b>Address:</b> <span th:text="${user.address}"></span></p>
+<p><b>Country:</b> <span th:text="${user.country}"></span></p>
+<p><b>State:</b> <span th:text="${user.state}"></span></p>
+<p><b>City:</b> <span th:text="${user.city}"></span></p>
+<p><b>Pincode:</b> <span th:text="${user.pinCode}"></span></p>
+
+
+</div>
+</div>
+</div>
+</div>
+</body>
+</html> 
+
+
+

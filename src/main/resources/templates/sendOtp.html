@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/sendOtp.css}">
+</head>
+<body>
+<div class="main">
+    <form class="form-box" th:action="@{/sendOtp}" method="post">
+       <h2>Email Verification</h2>
+       <p class="sub"> Enter your email to receive  OTP</p>
+<div class="input-group">
+       <label>Email Address</label><br><br>
+       <input type="email"name="email" placeholder="Enter your email" required><br><br>
+</div>
+       <input class="btn" type="submit">
+    </form>
+
+</div>
+</body>
+</html>
