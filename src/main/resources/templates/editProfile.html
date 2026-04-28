@@ -14,7 +14,7 @@
     <div class="sidebar">
         <a th:href="@{/dashboard}">🏠 Dashboard</a>
         <a th:href="@{/profile}">👤 Profile</a>
-        <a th:href="@{/settings}">⚙ Settings</a>
+        <!-- <a th:href="@{/settings}">⚙ Settings</a> -->
         <a th:href="@{/logout}">🚪 Logout</a>
     </div>
 
@@ -57,6 +57,8 @@
                     <label>City</label>
                     <input type="text" name="city" th:value="${user.city}">
                 </div>
+
+                
 
                 <!-- Buttons -->
                 <div class="buttons">

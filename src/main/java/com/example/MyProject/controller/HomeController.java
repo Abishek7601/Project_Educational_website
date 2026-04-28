@@ -127,7 +127,7 @@ public String Verify(@RequestParam("email") String email,
     }
 }
     private String generateRandomOtp(){
-        String otp=String.valueOf((new Random()).nextInt(9000)+1000);
+        String otp=String.valueOf((new Random()).nextInt(900000)+1000);
         return otp;
     }
 
@@ -176,7 +176,7 @@ public String login(@RequestParam("username") String username,
 
         repository.save(user);
 
-        // ✅ STORE USER IN SESSION
+       
         session.setAttribute("loggedUser", user);
 
         return "redirect:/dashboard";
@@ -211,7 +211,7 @@ public String dashboard(HttpSession session, Model model) {
     Project user = (Project) session.getAttribute("loggedUser");
 
     if (user == null) {
-        return "redirect:/login"; // 🚫 block access after logout
+        return "redirect:/login"; 
     }
 
     model.addAttribute("user", user);
@@ -279,14 +279,15 @@ public String profile(HttpSession session, Model model) {
 }
 
 
-    @GetMapping("/settings")
-    public String settings(Model model) {
-        model.addAttribute("message", "Settings Page");
-        return "settings"; 
-    }
+    // @GetMapping("/settings")
+    // public String settings(Model model) {
+    //     model.addAttribute("message", "Settings Page");
+    //     return "settings"; 
+    // }
 
     // @GetMapping("/logout")
     // public String logout(HttpSession session) {
+
     //     session.invalidate(); 
     //     return "redirect:/";  
     // }
