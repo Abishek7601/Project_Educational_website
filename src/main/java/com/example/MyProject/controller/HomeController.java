@@ -47,6 +47,7 @@ ProjectRepository repository;
     public String showForm(){
     return "courses";
 }
+
  @RequestMapping("/login")
     public String Loginlogin(){
         return "login";
@@ -57,26 +58,15 @@ ProjectRepository repository;
         return "about";
     }
 
-    
-    //  @RequestMapping("/sendOtp")
-    // public String Send(){
-    //     return "sendOtp";
-    // }
      @RequestMapping("/Submit")
     public String Sub(){
         return "usernamePass";
     }
-   
-
-   
 
     @RequestMapping("/contact")
     public String Contactus(){
         return "contact";
     }
-
-
-
 
     @GetMapping("/sendOtp")
     public String Login(){
@@ -129,35 +119,6 @@ public String Verify(@RequestParam("email") String email,
         return otp;
     }
 
-// @PostMapping("/Submit")
-// public String login(@RequestParam("username") String username,
-//                     @RequestParam("password") String password,
-//                     @RequestParam("email") String email,
-//                     Model model) {
-
-    
-//     Project user = repository.findByEmail(email);
-
-//     if (user != null) {
-
-        
-//         user.setUsername(username);
-//         user.setPassword(password);
-
-//         repository.save(user); 
-
-//         model.addAttribute("user", user);
-//         return "dashboard";
-
-//     } else {
-//         model.addAttribute("error", "Email not found");
-//         return "usernamePass";
-//     }
-// }
-
-
-       
-
 @PostMapping("/Submit")
 public String login(@RequestParam("username") String username,
                     @RequestParam("password") String password,
@@ -185,24 +146,6 @@ public String login(@RequestParam("username") String username,
     }
 }
 
-
-
-
-
-// @GetMapping("/dashboard")
-// public String dashboard(HttpSession session, Model model) {
-
-//     Project user = (Project) session.getAttribute("loggedUser");
-
-//     if (user == null) {
-//         return "redirect:/login";
-//     }
-
-//     model.addAttribute("user", user);
-
-//     return "dashboard";
-// }
-
 @GetMapping("/dashboard")
 public String dashboard(HttpSession session, Model model) {
 
@@ -224,8 +167,7 @@ public String loginUser(@RequestParam("username") String username,
                         Model model,
                         HttpSession session) {
 
-    // System.out.println("Username: " + username);
-    // System.out.println("Password: " + password);
+
 
     Project user = repository.findByUsernameAndPassword(username.trim(), password.trim());
 
@@ -245,21 +187,11 @@ public String loginUser(@RequestParam("username") String username,
     }
 }
 
-
-
-
-
     @GetMapping("/home")
     public String home(Model model) {
         model.addAttribute("message", "Welcome to Home Page");
         return "home"; 
     }
-
-    // @GetMapping("/profile")
-    // public String profile(Model model) {
-    //     model.addAttribute("message", "User Profile Page");
-    //     return "profile"; 
-    // }
 
 
 @GetMapping("/profile")
@@ -276,34 +208,13 @@ public String profile(HttpSession session, Model model) {
     return "profile";
 }
 
-
-    // @GetMapping("/settings")
-    // public String settings(Model model) {
-    //     model.addAttribute("message", "Settings Page");
-    //     return "settings"; 
-    // }
-
-    // @GetMapping("/logout")
-    // public String logout(HttpSession session) {
-
-    //     session.invalidate(); 
-    //     return "redirect:/";  
-    // }
-
-
-
-
-
-
     @GetMapping("/logout")
     public String logout(HttpSession session, HttpServletResponse response) {
 
-        // 1. Invalidate session
         if (session != null) {
             session.invalidate();
         }
 
-        // 2. Delete JSESSIONID cookie
         Cookie cookie = new Cookie("JSESSIONID", null);
         cookie.setPath("/");
         cookie.setMaxAge(0); // important → deletes cookie
@@ -311,7 +222,6 @@ public String profile(HttpSession session, Model model) {
 
         return "redirect:/login"; // redirect to login page
     }
-
 
 
     @GetMapping("/editProfile")
@@ -333,7 +243,7 @@ public String updateProfile(@RequestParam String fullName,
                             @RequestParam String mobile,
                             @RequestParam String education,
                             @RequestParam String city,
-                            // @RequestParam("imageFile") MultipartFile file,
+
                             HttpSession session) throws IOException {
 
     Project user = (Project) session.getAttribute("loggedUser");
@@ -344,9 +254,6 @@ public String updateProfile(@RequestParam String fullName,
     user.setEducation(education);
     user.setCity(city);
 
-    // if (!file.isEmpty()) {
-    //     user.setImage(file.getBytes());
-    // }
 
     repository.save(user);
 
