@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Login</title>
 <link rel="stylesheet" th:href="@{/css/login.css}">
@@ -15,7 +15,7 @@
 
 <h2>Login</h2>
 
-<!-- ✅ ERROR MESSAGE -->
+
 <p th:if="${error}" th:text="${error}" style="color:red; text-align:center;"></p>
 
 <form th:action="@{/loginUser}" method="post" autocomplete="off">
@@ -26,16 +26,14 @@
         <label><b>Username</b></label>
        <input type="text" name="username" 
        placeholder="Enter Username" 
-       readonly 
-       onfocus="this.removeAttribute('readonly');" required>
+       autocomplete="off" required>
     </div>
 
     <div class="form-group">
         <label><b>Password</b></label>
        <input type="password" name="password" 
        placeholder="Enter password" 
-       readonly 
-       onfocus="this.removeAttribute('readonly');" required>
+      autocomplete="new-password" required>
     </div>
 
     <button class="login-btn">Login</button>
