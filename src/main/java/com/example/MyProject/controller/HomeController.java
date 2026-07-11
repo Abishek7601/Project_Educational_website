@@ -41,8 +41,6 @@ ProjectRepository repository;
     public String SaveDetails(@ModelAttribute Project details){
         service.AddStudent(details);
         return "login";
-
-
     }
     
     @GetMapping("/course")
